@@ -54,7 +54,7 @@ print("Generated prime number (p):", p)
 
 
 if __name__ == "__main__":
-    # Shared prime (p) and base (g)   
+    #   generate base (g)   
     g = 29
 
     # Sheldon's private key
