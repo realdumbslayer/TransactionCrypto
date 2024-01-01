@@ -14,6 +14,7 @@ from random import (
     
 import random
 def is_prime(n, k=5):
+"where k is the number of iterations  "
     """Miller-Rabin primality test."""
     if n <= 1 or n % 2 == 0:
         return False
