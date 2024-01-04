@@ -90,7 +90,6 @@ print("Shared secret calculated by Sheldon:", shared_secret_sheldon)
 print("Shared secret calculated by Bank:", shared_secret_bank)    
 
 #AES CODE STARTS
-
 def derive_aes_key(shared_secret):
     # Convert the shared secret to bytes
     shared_secret_bytes = shared_secret.to_bytes((shared_secret.bit_length() + 7) // 8, byteorder='big')
@@ -103,13 +102,17 @@ def derive_aes_key(shared_secret):
 
     return aes_key
 
+import os
+iv = os.urandom(16)
 def aes_encrypt(data, aes_key):
+   
     # Pad the data to a multiple of the block size
     padder = padding.PKCS7(algorithms.AES.block_size).padder()
     padded_data = padder.update(data) + padder.finalize()
+   
 
     # Create a Cipher object
-    cipher = Cipher(algorithms.AES(aes_key), modes.ECB(), backend=default_backend())
+    cipher = Cipher(algorithms.AES(aes_key), modes.CBC(iv), backend=default_backend())
 
     # Create an encryptor object
     encryptor = cipher.encryptor()
@@ -121,7 +124,7 @@ def aes_encrypt(data, aes_key):
 
 def aes_decrypt(encrypted_data, aes_key):
     # Create a Cipher object
-    cipher = Cipher(algorithms.AES(aes_key), modes.ECB(), backend=default_backend())
+    cipher = Cipher(algorithms.AES(aes_key), modes.CBC(iv), backend=default_backend())
 
     # Create a decryptor object
     decryptor = cipher.decryptor()
