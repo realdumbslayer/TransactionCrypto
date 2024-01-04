@@ -103,7 +103,7 @@ def derive_aes_key(shared_secret):
     return aes_key
 
 import os
-iv = os.urandom(16)
+iv = os.urandom(16) " iv : initial vector (we assume that both sides agree for this vector) "
 def aes_encrypt(data, aes_key):
    
     # Pad the data to a multiple of the block size
