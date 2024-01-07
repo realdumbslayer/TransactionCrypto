@@ -50,7 +50,7 @@ def generate_prime(bits):
             return candidate
 
 # Example: Generate a random prime number with 24 bits
-p = generate_prime(8)
+p = generate_prime(24)
 print("Generated prime number (p):", p)
 
 
