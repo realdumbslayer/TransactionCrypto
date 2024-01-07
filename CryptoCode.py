@@ -14,8 +14,8 @@ from random import (
     
 import random
 def is_prime(n, k=5):
-"where k is the number of iterations  "
-    """Miller-Rabin primality test."""
+        #Miller-Rabin Primality Test
+#where k is the number of iterations
     if n <= 1 or n % 2 == 0:
         return False
     if n == 2 or n == 3:
@@ -103,7 +103,7 @@ def derive_aes_key(shared_secret):
     return aes_key
 
 import os
-iv = os.urandom(16) " iv : initial vector (we assume that both sides agree for this vector) "
+iv = os.urandom(16) #iv : initial vector (we assume that both sides agree for this vector) "
 def aes_encrypt(data, aes_key):
    
     # Pad the data to a multiple of the block size
